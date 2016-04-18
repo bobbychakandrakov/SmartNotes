@@ -10,11 +10,35 @@ app.factory('authenticationService',['$q','$http','$kinvey',function ($q,$http,$
             });
             return deffered.promise;
         },
-        register:function () {
-            
+        register:function (username , password) {
+            var deffered = $q.defer();
+            var promise = $kinvey.User.signup({
+                username : username,
+                password : password
+            });
+            promise.then(function(user) {
+                deffered.resolve(user);
+            }, function(err) {
+                deffered.reject(err);
+            });
+            return deffered.promise;
         },
         logout:function () {
-            
+            var deffered = $q.defer();
+            var promise = $kinvey.User.logout();
+            promise.then(function() {
+                deffered.resolve();
+            }, function(err) {
+                deffered.reject(err);
+            });
+            return deffered.promise;
+        },
+        isLogged:function () {
+            var user = $kinvey.getActiveUser();
+            if(user){
+                return true;
+            }
+            return false;
         }
     }
 }]);

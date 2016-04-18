@@ -9,6 +9,10 @@ app.config(function ($routeProvider,$locationProvider) {
         templateUrl:"templates/authentication/register.html",
         controller:"RegisterController"
      })
+     .when('/notes',{
+         templateUrl:"templates/notes/notes.html",
+         controller:"NotesController"
+     })
     .otherwise({redirectTo:'/'});
 });
 app.constant('kinveyConfig', {

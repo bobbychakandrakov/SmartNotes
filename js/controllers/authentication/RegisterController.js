@@ -1,6 +1,13 @@
-app.controller('RegisterController',['$scope',function ($scope) {
+app.controller('RegisterController',['$scope','authenticationService','$location',function ($scope,authenticationService,$location) {
+    if(authenticationService.isLogged()){
+        $location.path('/notes');
+    }
     $scope.user = {};
     $scope.register = function () {
-        console.log($scope.user);
+        authenticationService.register($scope.user.username, $scope.user.password).then(function () {
+            console.log("registered!");
+        },function (err) {
+            console.log(err);
+        });
     }
 }]);

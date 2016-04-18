@@ -1,19 +1,14 @@
-app.controller('LoginController',['$scope','authenticationService','$kinvey',function ($scope,authenticationService,$kinvey) {
+app.controller('LoginController',['$scope','authenticationService','$location',function ($scope,authenticationService,$location) {
+    if(authenticationService.isLogged()){
+        $location.path('/notes');
+    }
     $scope.user = {};
     $scope.login = function () {
         authenticationService.login($scope.user.username, $scope.user.password).then(function () {
-            console.log("bravo");
+            console.log("Logged in!");
+            $location.path('/notes');
         },function (err) {
             console.log(err);
-        });
-    };
-    $scope.logout = function () {
-        var promise = $kinvey.User.logout();
-        promise.then(function() {
-            console.log("logged out");
-        }, function(err) {
-            console.log(err);
-
         });
     };
 }]);
