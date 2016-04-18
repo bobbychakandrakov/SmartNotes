@@ -2,19 +2,23 @@
 <form role="form">
     <div class="form-group">
         <label for="username">Username:</label>
-        <input type="email" class="form-control" id="username" placeholder="Enter username">
+        <input type="text" class="form-control" id="username" placeholder="Enter username" ng-model="user.username">
     </div>
     <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="user.email">
     </div>
     <div class="form-group">
         <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" ng-model="user.password" minlength="6">
     </div>
     <div class="form-group">
         <label for="pwd-repeat">Password:</label>
-        <input type="password" class="form-control" id="pwd-repeat" placeholder="Repeat password">
+        <input type="password" class="form-control" id="pwd-repeat" placeholder="Repeat password" ng-model="user.passwordRepeat" minlength="6">
     </div>
-    <button type="submit" class="btn btn-default center-block">Register</button>
+    <button type="submit" class="btn btn-default center-block" ng-click="register()">Register</button>
+    <br>
+    <div class="form-group text-center">
+        <span class="text-center"><a href="#/">Login</a></span>
+    </div>
 </form>
