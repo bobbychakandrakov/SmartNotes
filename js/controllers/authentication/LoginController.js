@@ -1,13 +1,12 @@
-app.controller('LoginController',['$scope','$kinvey',function ($scope,$kinvey) {
+app.controller('LoginController',['$scope','authenticationService','$kinvey',function ($scope,authenticationService,$kinvey) {
     $scope.user = {};
     $scope.login = function () {
-        var promise = $kinvey.User.login($scope.user.username, $scope.user.password);
-        promise.then(function(user) {
+        authenticationService.login($scope.user.username, $scope.user.password).then(function () {
             console.log("bravo");
-        }, function(err) {
+        },function (err) {
             console.log(err);
         });
-    }
+    };
     $scope.logout = function () {
         var promise = $kinvey.User.logout();
         promise.then(function() {
@@ -16,5 +15,5 @@ app.controller('LoginController',['$scope','$kinvey',function ($scope,$kinvey) {
             console.log(err);
 
         });
-    }
+    };
 }]);
