@@ -13,6 +13,14 @@ app.config(function ($routeProvider,$locationProvider) {
          templateUrl:"templates/notes/notes.html",
          controller:"NotesController"
      })
+     .when('/note/:id',{
+         templateUrl:"templates/notes/note.html",
+         controller:"ViewNoteController"
+     })
+     .when('/add-note',{
+         templateUrl:"templates/notes/add-note.html",
+         controller:"AddNoteController"
+     })
     .otherwise({redirectTo:'/'});
 });
 app.constant('kinveyConfig', {

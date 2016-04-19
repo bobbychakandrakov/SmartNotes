@@ -6,6 +6,7 @@ app.controller('RegisterController',['$scope','authenticationService','$location
     $scope.register = function () {
         authenticationService.register($scope.user.username, $scope.user.password).then(function () {
             console.log("registered!");
+            $location.path('/notes');
         },function (err) {
             console.log(err);
         });

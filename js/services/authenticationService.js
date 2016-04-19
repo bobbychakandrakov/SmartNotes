@@ -1,4 +1,4 @@
-app.factory('authenticationService',['$q','$http','$kinvey',function ($q,$http,$kinvey) {
+app.factory('authenticationService',['$q','$http','$kinvey','$location',function ($q,$http,$kinvey,$location) {
     return {
         login:function (username,password) {
             var deffered = $q.defer();

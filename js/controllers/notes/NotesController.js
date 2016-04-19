@@ -1,5 +1,6 @@
-app.controller('NotesController',['$scope','authenticationService','$location',function ($scope,authenticationService,$location) {
-    if(authenticationService.isLogged() === false){
-        $location.path('/');
-    }
+app.controller('NotesController',['$scope','authenticationService','$location','$kinvey',function ($scope,authenticationService,$location,$kinvey) {
+    // if(authenticationService.isLogged() === false){
+    //     $location.path('/');
+    // }
+    authenticationService.isLogged()
 }]);
